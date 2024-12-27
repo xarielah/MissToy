@@ -1,0 +1,18 @@
+.app-header-top {
+  display: flex;
+  justify-content: space-between;
+  background-color: var(--primary-dark);
+  padding: 5px 0;
+}
+
+.cart-user-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.app-header-top-wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}

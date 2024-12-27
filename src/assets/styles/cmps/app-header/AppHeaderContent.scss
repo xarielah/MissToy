@@ -1,0 +1,17 @@
+.app-header-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: var(--primary);
+  padding: 2rem 0;
+}
+
+.app-header-logo {
+  width: 200px;
+}
+
+.app-header-content-wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}

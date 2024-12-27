@@ -1,0 +1,14 @@
+.app-footer {
+  display: grid;
+  grid-template-columns: subgrid;
+  grid-template-rows: repeat(2, auto);
+  background-color: #dfe4f5;
+}
+
+.app-footer > * {
+  grid-column: 2;
+}
+
+.app-footer .full {
+  grid-column: 1 / -1;
+}

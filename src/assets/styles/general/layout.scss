@@ -1,0 +1,17 @@
+.app-layout {
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  grid-template-columns: minmax(10px, 200px) minmax(400px, 1fr) minmax(
+      10px,
+      200px
+    );
+  min-height: 100vh;
+}
+
+.app-layout > * {
+  grid-column: 2;
+}
+
+.app-layout .full {
+  grid-column: 1 / -1;
+}

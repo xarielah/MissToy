@@ -1,0 +1,22 @@
+.app-header {
+  display: grid;
+  grid-template-columns: subgrid;
+  grid-template-rows: repeat(3, auto);
+}
+
+.app-header .full {
+  grid-column: 1 / -1;
+}
+
+.app-header .full > * {
+  grid-column: 2;
+}
+
+.app-header > section {
+  display: grid;
+  grid-template-columns: subgrid;
+}
+
+.app-header * {
+  color: var(--text-light);
+}
