@@ -4,6 +4,7 @@ const AppFooter = () => {
     return (
         <footer className="app-footer full">
             <AppFooterSubscribe />
+
             <div>asdasd</div>
         </footer>
     )
