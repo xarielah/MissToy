@@ -3,7 +3,7 @@ import { useSelector } from "react-redux"
 import { Navigate } from "react-router"
 import { userService } from "../services/user.service"
 
-const SignUp = () => {
+const Signup = () => {
     const [credentials, setCredentials] = useState(userService.getEmptyCredentials())
     const [error, setError] = useState(null)
 
@@ -17,7 +17,6 @@ const SignUp = () => {
             return setError("Please fill all the required fields")
         userService.signup(credentials)
             .then(user => {
-                console.log("🚀 ~ handleSubmit ~ user:", user)
                 setError(null)
                 setCredentials(userService.getEmptyCredentials())
             })
@@ -42,4 +41,4 @@ const SignUp = () => {
     )
 }
 
-export default SignUp;
+export default Signup;
