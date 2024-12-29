@@ -1,0 +1,9 @@
+@use "./mixins" as *;
+
+.signup {
+  @include centered-form;
+}
+
+.auth-error {
+  @include form-error;
+}

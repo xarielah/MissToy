@@ -1,0 +1,13 @@
+@use "./mixins" as *;
+
+.login {
+  @include centered-form;
+}
+
+.auth-error {
+  @include form-error;
+}
+
+h1 {
+  margin: 0;
+}

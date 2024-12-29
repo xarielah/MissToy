@@ -1,17 +1,12 @@
 /** General **/
 
-@import "./general/vars.scss";
-@import "./general/typography.scss";
-@import "./general/base.scss";
-@import "./general/layout.scss";
+@use "./general/vars" as *;
+@use "./general/typography" as *;
+@use "./general/base" as *;
+@use "./general/layout" as *;
 
 /** Components **/
 
-@import "./cmps/app-header/AppHeader.scss";
-@import "./cmps/app-header/AppHeaderTop.scss";
-@import "./cmps/app-header/AppHeaderContent.scss";
-@import "./cmps/app-header/AppHeaderBottom.scss";
-@import "./cmps/app-header/AppHeaderUser.scss";
-
-@import "./cmps/app-footer/AppFooter.scss";
-@import "./cmps/app-footer/AppFooterSubscribe.scss";
+@use "./cmps/app-header" as header;
+@use "./cmps/app-footer" as footer;
+@use "./cmps/app-auth" as auth;

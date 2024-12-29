@@ -5,3 +5,9 @@
   gap: 1rem;
   background-color: var(--primary);
 }
+
+.app-footer-subscribe-form {
+  & > * {
+    margin-right: 1em;
+  }
+}
