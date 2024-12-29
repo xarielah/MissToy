@@ -18,8 +18,7 @@ const Login = () => {
     const handleSubmit = (e) => {
         e.preventDefault()
         userService.login(credentials)
-            .then(user => {
-                console.log("🚀 ~ handleSubmit ~ user:", user)
+            .then(() => {
                 setError(null)
                 setCredentials(userService.getEmptyCredentials())
             })
