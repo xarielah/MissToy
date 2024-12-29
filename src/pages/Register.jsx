@@ -3,7 +3,7 @@ import { useSelector } from "react-redux"
 import { Navigate } from "react-router"
 import { userService } from "../services/user.service"
 
-const Signup = () => {
+const Register = () => {
     const [credentials, setCredentials] = useState(userService.getEmptyCredentials())
     const [error, setError] = useState(null)
 
@@ -41,4 +41,4 @@ const Signup = () => {
     )
 }
 
-export default Signup;
+export default Register;

@@ -4,7 +4,7 @@ import AppFooter from "./cmps/app/AppFooter";
 import AppHeader from "./cmps/app/AppHeader";
 import Home from "./pages/Home";
 import Login from "./pages/Login";
-import Signup from "./pages/Signup";
+import Register from "./pages/Register";
 import { userService } from "./services/user.service";
 import { SET_USER } from "./store/reducers";
 import { store } from "./store/store";
@@ -26,7 +26,7 @@ const App = () => {
         <Routes>
           <Route path="/home" element={<Home />} />
           <Route path="/about" element={<h1>About</h1>} />
-          <Route path="/signup" element={<Signup />} />
+          <Route path="/signup" element={<Register />} />
           <Route path="/login" element={<Login />} />
           <Route path="*" element={<Navigate to="/home" replace />} />
         </Routes>
