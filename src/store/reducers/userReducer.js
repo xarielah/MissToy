@@ -1,6 +1,6 @@
 
-const SET_USER = "SET_USER";
-const LOGOUT_USER = "LOGOUT_USER";
+export const SET_USER = "SET_USER";
+export const LOGOUT_USER = "LOGOUT_USER";
 
 // While loading the user we treat these values in the components as:
 // udefined = loading
@@ -20,10 +20,15 @@ const initialState = {
 
 export const userReducer = (state = initialState, action = {}) => {
     switch (action.type) {
-        case "SET_USER":
+        case SET_USER:
             return {
                 ...state,
                 user: action.payload
+            };
+        case LOGOUT_USER:
+            return {
+                ...state,
+                user: null
             };
         default:
             return state;
