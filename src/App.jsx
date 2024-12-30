@@ -2,9 +2,12 @@ import { useEffect } from "react";
 import { BrowserRouter, Navigate, Route, Routes } from "react-router";
 import AppFooter from "./cmps/app/AppFooter";
 import AppHeader from "./cmps/app/AppHeader";
-import Home from "./pages/Home";
+import ToyList from "./cmps/toys/ToyList";
+import About from "./pages/About";
+import Contact from "./pages/Contact";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
+import ToyIndex from "./pages/ToyIndex";
 import { userService } from "./services/user.service";
 import { SET_USER } from "./store/reducers";
 import { store } from "./store/store";
@@ -24,11 +27,14 @@ const App = () => {
       <AppHeader />
       <main className="app-main">
         <Routes>
-          <Route path="/home" element={<Home />} />
-          <Route path="/about" element={<h1>About</h1>} />
+          <Route path="/" element={<ToyIndex />}>
+            <Route path=":category?" element={<ToyList />} />
+          </Route>
+          <Route path="/about" element={<About />} />
+          <Route path="/contact" element={<Contact />} />
           <Route path="/signup" element={<Register />} />
           <Route path="/login" element={<Login />} />
-          <Route path="*" element={<Navigate to="/home" replace />} />
+          <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
       </main>
       <AppFooter />

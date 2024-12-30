@@ -1,0 +1,16 @@
+.toy-preview {
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  padding: 1em;
+}
+
+.toy-preview-footer {
+  display: flex;
+  justify-content: space-between;
+
+  & > div {
+    display: flex;
+    gap: 1em;
+  }
+}

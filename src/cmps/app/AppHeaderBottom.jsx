@@ -5,7 +5,7 @@ const AppHeaderBottom = () => {
         <section className="app-header-bottom full">
             <menu>
                 <li>
-                    <Link to="/">Home</Link>
+                    <Link to="/">Browse Toys</Link>
                 </li>
                 <li>
                     <Link to="/about">About</Link>

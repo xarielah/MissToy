@@ -1,0 +1,21 @@
+@use "./mixins" as *;
+
+.toy-list {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: auto 1fr;
+  gap: 2em;
+  padding-bottom: 2em;
+}
+
+@media (min-width: 950px) {
+  .toy-list {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1250px) {
+  .toy-list {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
