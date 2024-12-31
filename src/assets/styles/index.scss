@@ -7,6 +7,7 @@
 
 /** Components **/
 
+@use "./cmps/ui" as ui;
 @use "./cmps/app-header" as header;
 @use "./cmps/app-footer" as footer;
 @use "./cmps/app-auth" as auth;

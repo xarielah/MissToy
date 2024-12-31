@@ -39,6 +39,12 @@ h6 {
 }
 
 button {
+  background-color: transparent;
+  border: 0px;
+  font-size: 0.95em;
+}
+
+.btn {
   border-radius: 8px;
   border: 1px solid transparent;
   padding: 0.6em 1.2em;
@@ -54,12 +60,12 @@ a {
   text-decoration: none;
 }
 
-button:hover {
+.btn:hover {
   background-color: color.scale($color: $secondary, $lightness: 10%);
 }
 
-button:focus,
-button:focus-visible {
+.btn:focus,
+.btn:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
 }
 

@@ -1,18 +1,20 @@
+import { sortValues } from "../store/reducers";
+import { store } from "../store/store";
 import { storageService } from "./async-storage.service";
 import { utilService } from "./util.service";
 
 const STORAGE_KEY = 'toyDB'
 
 export const labels = [
-    { label: 'On wheels', slug: 'on-wheels' },
-    { label: 'Box game', slug: 'box-game' },
-    { label: 'Art', slug: 'art' },
-    { label: 'Baby', slug: 'baby' },
-    { label: 'Doll', slug: 'doll' },
-    { label: 'Puzzle', slug: 'puzzle' },
-    { label: 'Outdoor', slug: 'outdoor' },
-    { label: 'Battery Powered', slug: 'battery-powered' }
-];
+    'On wheels',
+    'Box game',
+    'Art',
+    'Baby',
+    'Doll',
+    'Puzzle',
+    'Outdoor',
+    'Battery Powered'
+]
 
 export const toyService = {
     query,
@@ -27,9 +29,38 @@ _createToys();
 
 async function query() {
     try {
-        const toys = await storageService.query(STORAGE_KEY) || await _createToys();
+        let toys = await storageService.query(STORAGE_KEY) || await _createToys();
 
-        // TODO: Create filter here
+        const filterBy = store.getState().toyModule.filterBy
+        const sortBy = store.getState().toyModule.sortBy
+
+        if (filterBy.name)
+            toys = toys.filter(toy => toy.name.toLowerCase().includes(filterBy.name.toLowerCase()))
+
+        if (filterBy.labels.length > 0)
+            toys = toys.filter(toy => filterBy.labels.every(label => toy.labels.includes(label)))
+
+        if (filterBy.inStock !== null)
+            toys = toys.filter(toy => toy.inStock === filterBy.inStock)
+
+        if (sortBy.field) {
+            toys = toys.sort((a, b) => {
+                // Special handling for price field
+                if (sortBy.field === sortValues.price) {
+                    // If one item is out of stock and the other isn't, out of stock goes last
+                    if (a.inStock !== b.inStock) {
+                        return b.inStock - a.inStock;
+                    }
+                    // If both items have same stock status, sort by price according to direction
+                    return sortBy.asc ? (a.price - b.price) : (b.price - a.price);
+                }
+
+                // Original sorting for other fields
+                if (sortBy.asc)
+                    return a[sortBy.field] > b[sortBy.field] ? 1 : -1;
+                return a[sortBy.field] < b[sortBy.field] ? 1 : -1;
+            });
+        }
 
         return toys;
     } catch (error) {
@@ -113,5 +144,5 @@ function _getRandomLabels(labels) {
     }
 
     // Return only the first 'numberOfLabels' elements
-    return shuffledLabels.slice(0, numberOfLabels).map(label => label.label);
+    return shuffledLabels.slice(0, numberOfLabels);
 }

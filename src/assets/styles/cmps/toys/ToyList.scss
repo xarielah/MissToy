@@ -2,20 +2,16 @@
 
 .toy-list {
   display: grid;
-  grid-template-columns: 1fr;
-  grid-template-rows: auto 1fr;
+  grid-template-columns: subgrid;
   gap: 2em;
   padding-bottom: 2em;
-}
+  @include grid-allover($row: 3);
 
-@media (min-width: 950px) {
-  .toy-list {
+  @media (min-width: 950px) {
     grid-template-columns: repeat(2, 1fr);
   }
-}
 
-@media (min-width: 1250px) {
-  .toy-list {
+  @media (min-width: 1250px) {
     grid-template-columns: repeat(3, 1fr);
   }
 }

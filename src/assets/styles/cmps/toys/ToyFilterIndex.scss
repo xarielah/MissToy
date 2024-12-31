@@ -1,0 +1,11 @@
+@use "./mixins" as *;
+
+.toy-filter-index {
+  display: flex;
+  justify-content: space-between;
+  @include grid-allover($row: 2);
+
+  & label > span {
+    margin-right: 10px;
+  }
+}

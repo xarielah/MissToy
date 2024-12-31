@@ -4,7 +4,7 @@ const AppFooterSubscribe = () => {
             <h2>Subscribe</h2>
             <form className="app-footer-subscribe-form">
                 <input className="input" type="email" placeholder="Enter your email" />
-                <button type="submit">Subscribe</button>
+                <button className="btn" type="submit">Subscribe</button>
             </form>
         </section>
     )
