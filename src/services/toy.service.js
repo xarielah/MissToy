@@ -3,7 +3,16 @@ import { utilService } from "./util.service";
 
 const STORAGE_KEY = 'toyDB'
 
-export const labels = ['On wheels', 'Box game', 'Art', 'Baby', 'Doll', 'Puzzle', 'Outdoor', 'Battery Powered'];
+export const labels = [
+    { label: 'On wheels', slug: 'on-wheels' },
+    { label: 'Box game', slug: 'box-game' },
+    { label: 'Art', slug: 'art' },
+    { label: 'Baby', slug: 'baby' },
+    { label: 'Doll', slug: 'doll' },
+    { label: 'Puzzle', slug: 'puzzle' },
+    { label: 'Outdoor', slug: 'outdoor' },
+    { label: 'Battery Powered', slug: 'battery-powered' }
+];
 
 export const toyService = {
     query,
@@ -16,7 +25,7 @@ _createToys();
 
 // CRUDL functions
 
-async function query(filterBy = {}) {
+async function query() {
     try {
         const toys = await storageService.query(STORAGE_KEY) || await _createToys();
 
@@ -104,5 +113,5 @@ function _getRandomLabels(labels) {
     }
 
     // Return only the first 'numberOfLabels' elements
-    return shuffledLabels.slice(0, numberOfLabels);
+    return shuffledLabels.slice(0, numberOfLabels).map(label => label.label);
 }
