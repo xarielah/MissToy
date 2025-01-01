@@ -20,16 +20,15 @@ export const toyService = {
     query,
     save,
     remove,
-    getEmptyToy
+    getEmptyToy,
+    getById
 }
-
-_createToys();
 
 // CRUDL functions
 
 async function query() {
     try {
-        let toys = await storageService.query(STORAGE_KEY) || await _createToys();
+        let toys = await storageService.query(STORAGE_KEY)
 
         const filterBy = store.getState().toyModule.filterBy
         const sortBy = store.getState().toyModule.sortBy
@@ -89,6 +88,14 @@ async function remove(toyId) {
     }
 }
 
+async function getById(toyId) {
+    try {
+        return storageService.get(STORAGE_KEY, toyId);
+    } catch (error) {
+        throw error;
+    }
+}
+
 function getEmptyToy() {
     return {
         name: '',
@@ -106,6 +113,7 @@ function _createRandomToy(toy) {
     toy.labels = _getRandomLabels(labels);
     toy.inStock = Math.random() >= 0.5;
     toy.price = Math.round(Math.random() * 300);
+    toy.createdAt = Date.now();
     return toy;
 }
 

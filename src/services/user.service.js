@@ -35,7 +35,7 @@ function login({ username, password }) {
 
 
 function signup({ username, password, fullname }) {
-    const user = { username, password, fullname }
+    const user = { username, password, fullname, isAdmin: false }
     return storageService.post(STORAGE_KEY, user)
         .then(_setLoggedinUser)
 }
@@ -54,7 +54,7 @@ function getLoggedinUser() {
 
 
 function _setLoggedinUser(user) {
-    const userToSave = { _id: user._id, fullname: user.fullname }
+    const userToSave = { _id: user._id, fullname: user.fullname, isAdmin: !!user.isAdmin }
     sessionStorage.setItem(STORAGE_KEY_LOGGEDIN, JSON.stringify(userToSave))
     store.dispatch({ type: SET_USER, payload: userToSave })
     return userToSave

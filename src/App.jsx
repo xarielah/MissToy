@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { BrowserRouter, Navigate, Route, Routes } from "react-router";
 import AppFooter from "./cmps/app/AppFooter";
 import AppHeader from "./cmps/app/AppHeader";
+import ToyDetails from "./cmps/toys/ToyDetails";
 import About from "./pages/About";
 import Contact from "./pages/Contact";
 import Login from "./pages/Login";
@@ -27,6 +28,7 @@ const App = () => {
       <main className="app-main">
         <Routes>
           <Route path="/" element={<ToyIndex />} />
+          <Route path="/toy/:toyId" element={<ToyDetails />} />
           <Route path="/about" element={<About />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/signup" element={<Register />} />
