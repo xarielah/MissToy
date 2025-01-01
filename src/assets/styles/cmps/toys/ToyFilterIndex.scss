@@ -4,8 +4,17 @@
   display: flex;
   justify-content: space-between;
   @include grid-allover($row: 2);
+  flex-direction: column;
+  flex-wrap: wrap;
+  gap: 1em;
 
   & label > span {
     margin-right: 10px;
+  }
+
+  @media (min-width: 1100px) {
+    flex-direction: row;
+    flex-wrap: nowrap;
+    gap: 0;
   }
 }

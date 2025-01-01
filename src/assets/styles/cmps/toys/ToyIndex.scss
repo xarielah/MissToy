@@ -7,7 +7,7 @@
   gap: 2em;
   padding-bottom: 2em;
 
-  &:first-child {
+  & > h1 {
     @include grid-allover($row: 1);
   }
 }

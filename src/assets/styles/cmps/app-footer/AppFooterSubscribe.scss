@@ -2,11 +2,27 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 1rem;
   background-color: var(--primary);
+  flex-direction: column;
+  padding-bottom: 2em;
+
+  @media (min-width: 750px) {
+    flex-direction: row;
+    padding-bottom: 0;
+    gap: 1em;
+  }
 }
 
 .app-footer-subscribe-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+  width: 90%;
+
+  @media (min-width: 500px) {
+    width: auto;
+    flex-direction: row;
+  }
   & > * {
     margin-right: 1em;
   }

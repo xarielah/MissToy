@@ -1,8 +1,22 @@
 .toy-preview {
+  display: grid;
+  grid-template-rows: 50px 1fr auto;
+  align-items: center;
   background-color: white;
   border-radius: 8px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   padding: 1em;
+
+  & > header {
+    align-self: self-start;
+  }
+}
+
+.toy-preview-header {
+  display: flex;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 10px;
 }
 
 .toy-preview-footer {

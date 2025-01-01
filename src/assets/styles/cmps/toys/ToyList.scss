@@ -7,11 +7,19 @@
   padding-bottom: 2em;
   @include grid-allover($row: 3);
 
+  @media (min-width: 0px) {
+    grid-template-columns: repeat(1, 1fr);
+  }
+
   @media (min-width: 950px) {
     grid-template-columns: repeat(2, 1fr);
   }
 
   @media (min-width: 1250px) {
     grid-template-columns: repeat(3, 1fr);
+  }
+
+  @media (min-width: 1450px) {
+    grid-template-columns: repeat(4, 1fr);
   }
 }

@@ -13,10 +13,6 @@
   grid-column: 1 / -1;
 }
 
-.app-footer-logo {
-  max-width: 200px;
-}
-
 .app-footer-links {
   display: flex;
   gap: 2em;
@@ -32,10 +28,30 @@
     }
   }
 
+  .app-footer-logo {
+    max-width: 200px;
+    display: none;
+
+    @media (min-width: 1250px) {
+      display: block;
+    }
+  }
+
   .app-footer-links-list {
-    display: flex;
+    display: grid;
     gap: 1em;
-    justify-content: space-around;
+
+    @media (min-width: 0px) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    @media (min-width: 950px) {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    @media (min-width: 1250px) {
+      grid-template-columns: repeat(4, 1fr);
+    }
   }
 }
 

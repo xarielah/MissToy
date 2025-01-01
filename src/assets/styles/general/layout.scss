@@ -1,9 +1,9 @@
 .app-layout {
   display: grid;
   grid-template-rows: auto 1fr auto;
-  grid-template-columns: minmax(10px, 100px) minmax(700px, 1fr) minmax(
+  grid-template-columns: minmax(10px, 150px) minmax(auto, 1fr) minmax(
       10px,
-      100px
+      150px
     );
   min-height: 100vh;
 }
