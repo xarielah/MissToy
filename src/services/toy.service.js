@@ -21,9 +21,11 @@ export const toyService = {
     save,
     remove,
     getEmptyToy,
-    getById
+    getById,
+    addMessage,
+    removeMessage
 }
-
+_createToys()
 // CRUDL functions
 
 async function query() {
@@ -96,6 +98,50 @@ async function getById(toyId) {
     }
 }
 
+async function addMessage(toyId, message) {
+    try {
+        const loggedUser = store.getState().userModule.user
+        if (!loggedUser) throw new Error(`User not logged in, cannot add message to toy.`)
+
+        const toy = await getById(toyId);
+        if (!toy) throw new Error(`Toy not found, cannot add message to it.`)
+
+        const newMessage = {
+            _id: utilService.makeId(),
+            text: message,
+            by: {
+                _id: loggedUser._id,
+                fullname: loggedUser.fullname
+            },
+        }
+
+        toy.messages = [newMessage, ...(toy.messages || [])];
+
+        return storageService.put(STORAGE_KEY, toy);
+    } catch (error) {
+        throw error;
+    }
+}
+
+async function removeMessage(toyId, messageId) {
+    try {
+        const loggedUser = store.getState().userModule.user
+        if (!loggedUser) throw new Error(`User not logged in, cannot add message to toy.`)
+
+        const toy = await getById(toyId);
+        if (!toy) throw new Error(`Toy not found, cannot add message to it.`)
+
+        const message = toy.messages.find(message => message._id === messageId && message.by._id === loggedUser._id)
+        if (!message) throw new Error(`Message not found or not owned by user, cannot delete it.`)
+
+        toy.messages = toy.messages.filter(message => message._id !== messageId)
+
+        return storageService.put(STORAGE_KEY, toy);
+    } catch (error) {
+        throw error;
+    }
+}
+
 function getEmptyToy() {
     return {
         name: '',
@@ -118,12 +164,17 @@ function _createRandomToy(toy) {
 }
 
 async function _createToys() {
-    const toys = [];
-    for (let i = 0; i < 20; i++) {
-        const toy = getEmptyToy();
-        toys.push(_createRandomToy(toy));
-    }
-    return storageService._save(STORAGE_KEY, toys);
+    storageService.query(STORAGE_KEY)
+        .then(toys => {
+            if (!toys) {
+                const toys = [];
+                for (let i = 0; i < 20; i++) {
+                    const toy = getEmptyToy();
+                    toys.push(_createRandomToy(toy));
+                }
+                storageService._save(STORAGE_KEY, toys);
+            }
+        })
 }
 
 function _generateToyName() {
