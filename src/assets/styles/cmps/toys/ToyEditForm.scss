@@ -1,0 +1,23 @@
+.toy-edit-form {
+  display: grid;
+  gap: 1em;
+  padding: 1rem;
+
+  & > label {
+    display: grid;
+    gap: 0.25em;
+  }
+
+  & .combobox-input {
+    min-width: 100%;
+  }
+
+  & > .btn {
+    max-width: 100%;
+
+    @media (min-width: 768px) {
+      max-width: max-content;
+      margin: 0 auto;
+    }
+  }
+}
