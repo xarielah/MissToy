@@ -1,0 +1,9 @@
+.toy-details-admin {
+  background-color: white;
+  border-radius: 8px;
+  padding: 5px 10px;
+
+  & > * {
+    margin-right: 10px;
+  }
+}

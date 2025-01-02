@@ -1,0 +1,9 @@
+.toy-details-messages-list {
+  display: grid;
+  margin-top: 2em;
+  gap: 1em;
+  & > p {
+    text-align: center;
+    font-size: 1em;
+  }
+}

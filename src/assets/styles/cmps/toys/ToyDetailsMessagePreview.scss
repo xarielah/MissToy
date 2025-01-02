@@ -1,0 +1,22 @@
+.toy-details-message-preview {
+  background-color: white;
+  border-radius: 8px;
+  padding: 1em;
+  display: grid;
+  grid-template-columns: 1fr auto;
+
+  .toy-message-preview-by {
+    font-size: 1.25em;
+    font-weight: bold;
+    text-transform: uppercase;
+    grid-row: 1;
+    grid-column: 1;
+  }
+
+  p {
+    grid-row: 2;
+    font-size: 1em;
+    grid-column: 1 / -1;
+    margin: 1em 0 0 0;
+  }
+}

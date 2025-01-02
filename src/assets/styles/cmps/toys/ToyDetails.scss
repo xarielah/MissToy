@@ -1,0 +1,36 @@
+.toy-details {
+  display: flex;
+  flex-direction: column;
+  gap: 2em;
+  & > main {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1em;
+
+    @media (min-width: 1250px) {
+      grid-template-columns: minmax(auto, 450px) 1fr;
+      gap: 3em;
+    }
+  }
+
+  p {
+    font-size: 2em;
+  }
+
+  .toy-details-actions {
+    .toy-details-actions-wrapper {
+      display: flex;
+      gap: 1em;
+    }
+  }
+
+  .toy-details-labels {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1em;
+
+    & > div {
+      font-size: 1em;
+    }
+  }
+}

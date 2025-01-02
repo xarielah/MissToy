@@ -1,7 +1,16 @@
 .tag {
-  background-color: #eee;
-  color: #111;
   padding: 0 0.5em;
   font-size: 0.8em;
   border-radius: 4px;
+}
+
+.tag-ghost {
+  background-color: #eee;
+  color: #111;
+}
+
+.tag-primary {
+  background-color: rgb(255, 217, 152);
+  font-weight: bold;
+  color: #333333;
 }
