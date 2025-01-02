@@ -21,6 +21,7 @@ const Register = () => {
                 setCredentials(userService.getEmptyCredentials())
             })
             .catch(err => {
+                console.log("🚀 ~ handleSubmit ~ err:", err)
                 setError(err)
             })
     }
@@ -33,9 +34,9 @@ const Register = () => {
         <form className="signup centered-container" onSubmit={handleSubmit}>
             <h1>SignUp</h1>
             {error && <p className="auth-error">{error}</p>}
-            <input className="input" onChange={handleChange} name="username" type="text" placeholder="Enter your username" required />
-            <input className="input" onChange={handleChange} name="fullname" type="text" placeholder="Enter your fullname" required />
-            <input className="input" onChange={handleChange} name="password" type="password" placeholder="Enter your password" required />
+            <input className="input" onChange={handleChange} value={credentials.username} name="username" type="text" placeholder="Enter your username" required />
+            <input className="input" onChange={handleChange} value={credentials.fullname} name="fullname" type="text" placeholder="Enter your fullname" required />
+            <input className="input" onChange={handleChange} value={credentials.password} name="password" type="password" placeholder="Enter your password" required />
             <button type="submit">Sign Up</button>
         </form>
     )

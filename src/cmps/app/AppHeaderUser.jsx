@@ -11,7 +11,7 @@ const AppHeaderUser = () => {
             <BsPerson />
             {user ?
                 <div className="app-logged-user">
-                    <span>{user.fullname}</span>
+                    <span>{user.fullname} {user.isAdmin ? '(Site Owner)' : ''}</span>
                     <BiLogOut style={{ cursor: 'pointer' }} role="button" onClick={() => userService.logout()} />
                 </div> :
                 <div className="app-header-user">

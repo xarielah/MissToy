@@ -6,12 +6,15 @@
       300px
     );
   min-height: 100vh;
+  & > * {
+    grid-column: 2;
+  }
+
+  & .full {
+    grid-column: 1 / -1;
+  }
 }
 
-.app-layout > * {
-  grid-column: 2;
-}
-
-.app-layout .full {
-  grid-column: 1 / -1;
+#root > main {
+  padding: 2em 0;
 }

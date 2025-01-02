@@ -25,9 +25,8 @@ function getById(userId) {
 function login({ username, password }) {
     return storageService.query(STORAGE_KEY)
         .then(users => {
-            const user = users.find(user => {
-                return user.username === username
-            })
+            const user = users.find(user => user.username.toLowerCase() === username.toLowerCase())
+
             if (user && user.password === password) return _setLoggedinUser(user)
             else return Promise.reject('Insufficient credentials, please try again.')
         })
@@ -35,9 +34,14 @@ function login({ username, password }) {
 
 
 function signup({ username, password, fullname }) {
-    const user = { username, password, fullname, isAdmin: false }
-    return storageService.post(STORAGE_KEY, user)
-        .then(_setLoggedinUser)
+    return storageService.query(STORAGE_KEY)
+        .then(users => {
+            const existingUser = users.find(user => user.username.toLowerCase() === username.toLowerCase());
+            if (existingUser) return Promise.reject('Username already exists, please try again.')
+            const user = { username, password, fullname, isAdmin: false }
+            return storageService.post(STORAGE_KEY, user)
+                .then(_setLoggedinUser)
+        })
 }
 
 

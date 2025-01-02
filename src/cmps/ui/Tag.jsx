@@ -1,6 +1,6 @@
-const Tag = ({ children }) => {
+const Tag = ({ children, variant = 'ghost' }) => {
     return (
-        <div className="tag">{children}</div>
+        <div className={`tag tag-${variant}`}>{children}</div>
     )
 }
 
